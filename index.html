@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#050a14">
+<title>Respiro VR - breathing trainer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage"><canvas id="gl"></canvas></div>
+<div id="overlay">
+  <div class="card">
+    <h1>Respiro&nbsp;VR</h1>
+    <p class="sub">Virtual spirometer, guided breathing trainers and mood rooms. Works with a respiratory belt over Bluetooth, or on its own in demo mode.</p>
+
+    <label>Breath input
+      <select id="source">
+        <option value="demo">Demo breathing (no belt)</option>
+        <option value="touch">Touch: hold screen = inhale</option>
+        <option value="mic">Microphone: blow</option>
+        <option value="http">Arduino Wi-Fi (HTTP, UNO R4 WiFi)</option>
+        <option value="serial">USB cable: Arduino serial (Chrome on PC)</option>
+        <option value="ble">Bluetooth belt (ESP32 / Arduino)</option>
+        <option value="ws">PC bridge / WebSocket (http page only)</option>
+      </select>
+    </label>
+    <label>Mood
+      <select id="mood"></select>
+    </label>
+
+    <div id="ipRow" hidden><label>Arduino IP address <input id="arduinoip" type="text" inputmode="decimal" placeholder="192.168.x.x  (see Serial Monitor)" autocapitalize="off" spellcheck="false"></label></div>
+    <div id="wsRow" hidden><label>WebSocket address <input id="wsurl" type="text" value="ws://localhost:8765" autocapitalize="off" spellcheck="false"></label></div>
+    <div class="row">
+      <button id="serial" class="ghost">Connect USB (Arduino)</button>
+      <button id="ble" class="ghost">Connect Bluetooth</button>
+    </div>
+    <div id="bleStatus" class="note"></div>
+
+    <div class="row">
+      <button id="xr" class="primary" disabled>Enter VR (WebXR)</button>
+      <button id="cardboard" class="primary">Cardboard mode</button>
+    </div>
+    <button id="flat" class="ghost">Flat preview (drag to look)</button>
+    <div id="note" class="note"></div>
+    <p class="fine">Cardboard mode: phone in landscape in a Cardboard-style viewer. Look at a button and wait, or tap the screen. Tip: turn on Do&nbsp;Not&nbsp;Disturb and set screen rotation to landscape.</p>
+  </div>
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
